@@ -1,0 +1,79 @@
+/* General layout */
+.main {
+  max-width: 1000px;
+  max-height: 100%;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Heading */
+.main h1 {
+  text-align: center;
+  color: #2c4c9e;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.heading
+{
+    background-color: #4762a6;
+    color: #ffffff;
+    border-radius: 12px 0px 0px 12px;
+    width:130px;
+    padding: 5px 35px ;
+    margin: 0px;
+}
+
+/* Individual booking card */
+.booking-card {
+  background-color: #fdfdfd;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  border: 1px solid #4444441b;
+  margin-bottom: 25px;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.booking-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Event Title */
+.booking-card h5 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-size: medium;
+}
+
+/* Paragraphs */
+.booking-card p {
+  font-size: 1rem;
+  color: #444;
+  margin: 6px 0;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .booking-card {
+    padding: 15px 20px;
+  }
+
+  .main h1 {
+    font-size: 2rem;
+  }
+
+  .booking-card h2 {
+    font-size: 1.25rem;
+  }
+
+  .booking-card p {
+    font-size: 0.95rem;
+  }
+}

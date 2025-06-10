@@ -1,0 +1,54 @@
+.movie-slider {
+  display: flex;
+  gap: 40px;
+  animation: scroll 40s linear infinite;
+  width: max-content;
+  padding: 20px;
+  background-color: #a8dbffa5;
+  
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.movie-slide {
+  min-width: 200px;
+  text-align: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: white;
+  transition: transform 0.3s ease;
+}
+
+.movie-slide:hover {
+  transform: scale(1.05);
+}
+
+.movie-slide img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+.movie-slide h3 {
+  font-size: 1rem;
+  padding: 10px;
+  color: #333;
+}
+
+h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 20px;
+  color: #222;
+  font-weight: 600;
+}

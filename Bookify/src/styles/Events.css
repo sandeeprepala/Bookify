@@ -1,0 +1,113 @@
+.events-container {
+  padding: 30px;
+  background-color: #f5f5f5;
+  font-family: 'Poppins', sans-serif;
+}
+.events-container h3{
+  font-size: 2rem;
+  font-weight: 200;
+  color: #000000;
+}
+.events-heading {
+  text-align: center;
+  max-width:1600px;
+  width: 1421px;
+  margin-left: -30px;
+  font-size: 2.4rem;
+  color: #ffffff;
+  text-shadow: #000000;
+  padding: 10px 50px;
+  margin-top: -30px;
+  background-color: #2c4c9e;
+  margin-bottom: 5px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 100;
+}
+
+.cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Updated to allow exactly 5 cards per row */
+  gap: 10px;
+  justify-items: center; /* Optional: center cards horizontally if they don’t stretch fully */
+}
+
+
+.event-card {
+  background-color: #ffffff3c;
+  border-radius: 6px;
+  width: 250px;
+  height: 530px;
+  padding: 9px;
+  background-color: rgb(255, 255, 255);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.event-card:hover {
+  transform: scale(1.02);
+}
+
+.event-image {
+  width: 100%;
+  height: 290px;
+  object-fit:fill;
+}
+
+.event-details {
+  padding: 2px;
+}
+
+.event-details h2 {
+  margin-top: 0;
+  margin-bottom: 0px;
+  color: #2c4c9e;
+}
+
+.event-details p {
+  margin: 3px 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+.delete-event-btn 
+{
+  background-color: #ff0000c5;
+  padding: 5px;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 10px;
+  font-weight: 100;
+}
+.delete-event-btn:hover{
+  background-color: #d60000;
+  color: white;
+  font-weight: 100;
+  box-shadow: none;
+}
+.book-event-btn{
+  background-color: #1b69bd;
+  padding: 7px 20px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 10px;
+  font-weight: 100;
+}
+
+.search{
+  padding: 15px 400px;
+  border-radius: 20px;
+  border: none;
+  font-size: 16px;
+  background-color: #ffffff;
+  color: black;
+  margin-bottom: 40px;
+  outline: none;
+  font-weight:900;
+  box-shadow: 0 4px 12px rgba(0, 0, 12, 0.275);
+}

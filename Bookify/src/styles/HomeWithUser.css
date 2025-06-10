@@ -1,0 +1,103 @@
+/* Full-width banner at top */
+.home-banner {
+  max-width: 1600px;
+  padding: 70px;
+  background-color: #1142acf2;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  line-height: 3;
+ color: #333;
+  display: flex;
+}
+.home-content-right{
+  padding: 0px 100px;
+}
+.home-content-right img{
+  /* background-color: #2c4c9e; */
+  padding: 0px;
+  box-shadow: 0 0 5px #2c509e64;
+}
+/* Centered content inside */
+.home-content {
+  max-width: 1100px;
+  margin: -30px   auto;
+  text-align: center;
+}
+
+.home-content-right img:hover{
+  transform: scale(1.01);
+}
+
+/* Heading styles */
+.home-title {
+  margin-top: -60px;
+  font-size: 42px;
+  font-weight: 100;
+  color: #a96565e5; /* bold blue */
+  margin-bottom: -100px;
+  font-family:fantasy 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+/* Paragraph styles */
+.home-description {
+  font-size: 30px;
+  color: #386cc0fd;
+  line-height: 1.6;
+  margin-bottom:60px;
+  font-family:fantasy 'Poppins', sans-serif;
+}
+.booknow{
+    background-color: #000000; /* Bootstrap-like blue */
+  color: #386cc0fd;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 550;
+  font-size: 20px;
+  cursor: pointer;
+  margin-bottom: 30px;
+  /* box-shadow: 0 4px 6px rgba(0, 123, 255, 0.4); */
+}
+.booknow:hover {
+  background-color: #386cc0fd; /* Darker blue on hover */
+  color: #000000;
+  box-shadow: 0 6px 8px rgba(0, 86, 179, 0.6);
+}
+.bookify{
+  font-family:monospace;
+  font-size: 70px;
+  font-weight: 900;
+  color:rgb(0, 26, 70);
+  text-shadow: 0 0 7px #001a786d;
+}
+.other{
+  font-weight: 400;
+  color: #387ec0;
+}
+.marquee {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.marquee {
+  animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+
+.home-description-nouser{
+  color: #4595d6;
+  font-size: 60px;
+  line-height: 1.6;
+  margin-bottom:60px;
+  font-family:fantasy 'Poppins', sans-serif;
+}

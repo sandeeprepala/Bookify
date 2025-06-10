@@ -1,0 +1,45 @@
+.carousel-container {
+    max-width: 1420px;
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+  background-color: #fdfdfdaf;
+  padding: 50px;
+}
+
+.carousel-track {
+  display: flex;
+  width: calc(200px * 12); /* 6 theatres * 2 for looping */
+  animation: slide 20s linear infinite;
+}
+
+.card {
+  flex: 0 0 200px;
+  margin: 0 10px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 10px;
+}
+
+.card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-weight: 600;
+  color: #2c4c9e;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

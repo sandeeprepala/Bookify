@@ -1,0 +1,32 @@
+.event-form-container {
+  max-width: 500px;
+  margin: 1rem auto;
+  padding: 40px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.event-form-container h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: xx-larger;
+  color: #1e40af;
+}
+
+.event-form-container input,
+.event-form-container textarea,
+.event-form-container button {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+}
+
+.message {
+  text-align: center;
+  color: green;
+  margin-bottom: 1rem;
+}

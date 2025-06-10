@@ -1,0 +1,17 @@
+.logout-button {
+  background-color: #1b69bd; /* Bootstrap-like blue */
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  /* box-shadow: 0 4px 6px rgba(0, 123, 255, 0.4); */
+}
+
+.logout-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  box-shadow: 0 6px 8px rgba(0, 86, 179, 0.6);
+}

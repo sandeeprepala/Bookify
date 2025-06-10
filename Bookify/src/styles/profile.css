@@ -1,0 +1,128 @@
+.profile-wrapper {
+  display: flex;
+  max-width: 900px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+.profile-left {
+  width: 35%;
+  background-color: #1e62aa;
+  color: white;
+  padding: 40px 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-left .avatar {
+  width: 80px;
+  height: 80px;
+  background-image: url(https://i.pinimg.com/736x/38/6c/52/386c5283f14bdca0fa14e28dd18fb574.jpg);
+  background-size: cover;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+}
+
+.profile-left h2 {
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.profile-left p {
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.next-btn {
+  background-color: #ffffff;
+  color: #007bff;
+  border: none;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.next-btn:hover {
+  background-color: #e6e6e6;
+}
+
+.profile-right {
+  width: 65%;
+  padding: 40px;
+  background-color: #f9fbfd;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-form label {
+  font-size: 14px;
+  margin: 10px 0 5px;
+}
+
+.profile-form input[type='text'],
+.profile-form input[type='email'] {
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.form-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.cancel-btn {
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.save-btn {
+  background-color: #1b69bd;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background-color: #1b69bd;
+}
+
+.noUser{
+  display: flex;
+  max-width: 900px;
+  margin: 50px auto;
+  height: 425px;
+  background-color: #ffffffcc;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
+  color: #1b69bd;
+}

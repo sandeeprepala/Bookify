@@ -1,0 +1,74 @@
+.admin-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background: #ffffff;
+}
+
+.head {
+  background-color: #2c4c9e;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.head h2 {
+  margin: 0;
+  font-size: 24px;
+  color: white;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  min-width: 250px;
+}
+
+button {
+  background-color: #ffffff;
+  color: #2c4c9e;
+  border: 2px solid #2c4c9e;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2c4c9e;
+  color: white;
+}
+
+.form-section {
+  margin-top: 20px;
+}
+
+.show-card {
+  background: #f0f4ff;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+
+.delete-show-btn {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.delete-show-btn:hover {
+  background-color: #c9302c;
+}

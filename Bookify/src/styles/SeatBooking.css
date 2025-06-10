@@ -1,0 +1,82 @@
+.seat-booking-container {
+  padding: 2rem;
+  text-align: center;
+  background: #f0f8ff;
+  min-height: 100vh;
+}
+
+.seat-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 40px);
+  gap: 10px;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.seat {
+  padding: 10px;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 12px;
+}
+
+.seat.booked {
+  background-color: #ff4d4d;
+  cursor: not-allowed;
+}
+
+.seat.selected {
+  background-color: #4caf50;
+  color: white;
+}
+
+.book-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #2c4c9e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.book-button:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+.screen{
+    width: 1230px;
+    margin-left: 120px;
+    margin-top: 50px;
+    height: 10px;
+    font-size: x-small;
+    background-color: #cacaca;
+   box-shadow: 0 0 10px rgb(103, 103, 103);
+   margin-bottom:40px;
+
+}
+
+.sections{
+  font-size: 15px;
+  display: flex;
+    justify-content:center;
+    gap: 15px;
+    color: #ffffff;
+    align-items: center;
+    background-color: #2c4c9e;
+    padding: 30px;
+}
+
+.green{
+    background-color: #4caf50;
+    padding: 12px;
+    
+}
+
+.red{
+    background-color: #ff4d4d;
+    padding: 12px;
+}
