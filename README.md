@@ -43,7 +43,7 @@ Bookify is a full-stack **MERN** application that allows users to browse, book, 
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB, Mongoose
 - **Authentication:** JWT
-- **Payments:** Stripe (or other integration)
+- **Payments:** Razorpay
 - **Deployment:** Vercel (Frontend), Render / Railway (Backend)
 
 ---
