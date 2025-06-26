@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/AddShowForm.css';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
+
 const AddShowForm = ({ theatreId }) => {
   const [eventId, setEventId] = useState('');
   const [showSlot, setShowSlot] = useState('');
@@ -13,7 +15,7 @@ const AddShowForm = ({ theatreId }) => {
     const bookedSeats = bookedSeatsInput
       .split(',')
       .map(seat => seat.trim())
-      .filter(seat => seat); // remove empty strings
+      .filter(seat => seat);
 
     const show = { eventId, showSlot, bookedSeats };
 
@@ -21,11 +23,15 @@ const AddShowForm = ({ theatreId }) => {
       const userDataString = localStorage.getItem('bookifyUser');
       const token = userDataString ? JSON.parse(userDataString).accessToken : null;
 
-      const response = await axios.post(`/api/v1/shows/${theatreId}`, show, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
+      const response = await axios.post(
+        `${BACKEND_URL}/api/v1/shows/${theatreId}`,
+        show,
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        }
+      );
 
       alert('Show added successfully!');
       setEventId('');

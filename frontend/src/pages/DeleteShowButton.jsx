@@ -8,9 +8,10 @@ const DeleteShowButton = ({ theatreId, showId, onSuccess }) => {
 
     const userDataString = localStorage.getItem('bookifyUser');
     const token = userDataString ? JSON.parse(userDataString).accessToken : null;
+    const backendURL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
 
     try {
-      await axios.delete(`/api/v1/shows/${theatreId}/${showId}`, {
+      await axios.delete(`${backendURL}/api/v1/shows/${theatreId}/${showId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

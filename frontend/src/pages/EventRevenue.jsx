@@ -1,12 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import '../styles/EventRevenue.css'; // Import your CSS
+import '../styles/EventRevenue.css';
 
 const EventRevenue = () => {
   const [events, setEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState('');
   const [revenue, setRevenue] = useState(null);
+
+  const backendURL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -14,14 +16,13 @@ const EventRevenue = () => {
         const userDataString = localStorage.getItem('bookifyUser');
         const token = userDataString ? JSON.parse(userDataString).accessToken : null;
 
-        const res = await axios.get('/api/v1/events', {
+        const res = await axios.get(`${backendURL}/api/v1/events`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
 
-        console.log('Fetched events:', res.data.data); // Adjust if your data is nested differently
-        setEvents(res.data.data || []); // Set the events; adjust path according to your API response
+        setEvents(res.data.data || []);
       } catch (error) {
         console.error('Error fetching events:', error);
         setEvents([]);
@@ -29,11 +30,11 @@ const EventRevenue = () => {
     };
 
     fetchEvents();
-  }, []);
+  }, [backendURL]);
 
   return (
     <div className='revenue-container'>
-        <h1>Total Revenue</h1>
+      <h1>Total Revenue</h1>
       <select value={selectedEvent} onChange={(e) => setSelectedEvent(e.target.value)}>
         <option value="">-- Select an Event --</option>
         {(events || []).map((event) => (
@@ -51,7 +52,7 @@ const EventRevenue = () => {
             const token = userDataString ? JSON.parse(userDataString).accessToken : null;
 
             const res = await axios.post(
-              '/api/v1/admin/revenue',
+              `${backendURL}/api/v1/admin/revenue`,
               { eventId: selectedEvent },
               {
                 headers: {
@@ -59,7 +60,6 @@ const EventRevenue = () => {
                 },
               }
             );
-            console.log('Fetched revenue:', res.data.data); // Adjust if your data is nested differently
             setRevenue(res.data.data);
           } catch (error) {
             console.error('Error fetching revenue:', error);

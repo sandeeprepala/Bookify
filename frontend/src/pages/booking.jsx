@@ -3,6 +3,8 @@ import axios from 'axios';
 import '../styles/SeatBooking.css';
 import { useNavigate } from'react-router-dom';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
+
 const Booking = ({ showId, theatreId }) => {
   const navigate = useNavigate();
   const [bookedSeats, setBookedSeats] = useState([]);
@@ -15,7 +17,7 @@ const Booking = ({ showId, theatreId }) => {
       try {
         const userDataString = localStorage.getItem('bookifyUser');
         const token = userDataString ? JSON.parse(userDataString).accessToken : null;
-        const response = await axios.get(`/api/v1/theatres/${theatreId}`, {
+        const response = await axios.get(`${BACKEND_URL}/api/v1/theatres/${theatreId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -40,95 +42,88 @@ const Booking = ({ showId, theatreId }) => {
   };
 
   const handleBooking = async () => {
-  const userDataString = localStorage.getItem('bookifyUser');
-  const token = userDataString ? JSON.parse(userDataString).accessToken : null;
+    const userDataString = localStorage.getItem('bookifyUser');
+    const token = userDataString ? JSON.parse(userDataString).accessToken : null;
 
-  try {
-    const totalAmount = selectedSeats.length * 200; // example: ₹200 per seat
+    try {
+      const totalAmount = selectedSeats.length * 200;
 
-    // 1. Create Razorpay order
-    const { data } = await axios.post(
-      '/api/v1/payments/create-order',
-      { amount: totalAmount },
-      {
-        headers: { Authorization: `Bearer ${token}` },
-        withCredentials: true,
-      }
-    );
+      const { data } = await axios.post(
+        `${BACKEND_URL}/api/v1/payments/create-order`,
+        { amount: totalAmount },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+          withCredentials: true,
+        }
+      );
 
-    const { id: order_id, amount } = data.order;
+      const { id: order_id, amount } = data.order;
 
-    // 2. Setup Razorpay payment
-    const options = {
-      key: import.meta.env.VITE_RAZORPAY_KEY_ID,
-      amount,
-      currency: "INR",
-      name: "Bookify",
-      description: "Movie Ticket Booking",
-      order_id,
-      handler: async function (response) {
-        // 3. Verify Payment
-        const verifyRes = await axios.post(
-          '/api/v1/payments/verify-payment',
-          {
-            razorpay_order_id: response.razorpay_order_id,
-            razorpay_payment_id: response.razorpay_payment_id,
-            razorpay_signature: response.razorpay_signature,
-          },
-          {
-            headers: { Authorization: `Bearer ${token}` },
-            withCredentials: true,
-          }
-        );
-
-        if (verifyRes.data.success) {
-          // 4. Book seats only after successful payment
-          await axios.post(
-            '/api/v1/bookings/book',
+      const options = {
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+        amount,
+        currency: "INR",
+        name: "Bookify",
+        description: "Movie Ticket Booking",
+        order_id,
+        handler: async function (response) {
+          const verifyRes = await axios.post(
+            `${BACKEND_URL}/api/v1/payments/verify-payment`,
             {
-              theatreId,
-              showId,
-              selectedSeats,
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
             },
             {
               headers: { Authorization: `Bearer ${token}` },
+              withCredentials: true,
             }
           );
 
-          alert("Booking successful!");
-          setSelectedSeats([]);
-          navigate("/bookings/my-bookings"); // or any success page
-        } else {
-          alert("Payment verification failed.");
-        }
-      },
-      prefill: {
-        name: "Sandeep Repala",
-        email: "test@example.com",
-      },
-      theme: {
-        color: "#3399cc",
-      },
-    };
+          if (verifyRes.data.success) {
+            await axios.post(
+              `${BACKEND_URL}/api/v1/bookings/book`,
+              {
+                theatreId,
+                showId,
+                selectedSeats,
+              },
+              {
+                headers: { Authorization: `Bearer ${token}` },
+              }
+            );
 
-    const rzp = new window.Razorpay(options);
-    rzp.open();
-  } catch (error) {
-    console.error('Payment/Booking error:', error);
-    alert('Something went wrong. Try again.');
-  }
-};
+            alert("Booking successful!");
+            setSelectedSeats([]);
+            navigate("/bookings/my-bookings");
+          } else {
+            alert("Payment verification failed.");
+          }
+        },
+        prefill: {
+          name: "Sandeep Repala",
+          email: "test@example.com",
+        },
+        theme: {
+          color: "#3399cc",
+        },
+      };
+
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } catch (error) {
+      console.error('Payment/Booking error:', error);
+      alert('Something went wrong. Try again.');
+    }
+  };
 
   return (
     <div className="seat-booking-container">
-      {/* <p className='heading'>
-        <button className='green'></button> your seat booking
-        <button className='red'></button> already booked
-        <button className='seat'></button> not selected
-      </p> */}
-      <p className='sections'><button className='green'></button> Your Seat Booking
+      <p className='sections'>
+        <button className='green'></button> Your Seat Booking
         <button className='red'></button> Already Booked
-        <button className='seat'></button> Not Selected</p>
+        <button className='seat'></button> Not Selected
+      </p>
       <div className="seat-grid">
         {rows.map((row) =>
           Array.from({ length: seatsPerRow }, (_, i) => {

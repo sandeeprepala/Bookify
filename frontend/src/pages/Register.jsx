@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import axios from 'axios';
-import '../styles/register.css'; // Assuming you have a CSS file for styling
+import '../styles/register.css';
 import { useNavigate } from 'react-router-dom';
-
-
 
 const Register = () => {
   const navigate = useNavigate();
+  const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -23,7 +22,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('/api/v1/users/register', {
+      const res = await axios.post(`${BASE_URL}/api/v1/users/register`, {
         username: formData.username,
         email: formData.email,
         password: formData.password,
@@ -31,8 +30,7 @@ const Register = () => {
         role: formData.role,
       });
       setMessage('Registration successful! You can now log in.');
-      navigate('/login'); // redirects to login page
-
+      navigate('/login');
     } catch (err) {
       setMessage(err.response?.data?.message || 'Registration failed.');
     }
@@ -68,7 +66,6 @@ const Register = () => {
             required
           />
           <input
-            
             type="text"
             name="city"
             placeholder="City"
@@ -77,7 +74,6 @@ const Register = () => {
             required
           />
           <select
-           
             name="role"
             value={formData.role}
             onChange={handleChange}
@@ -88,7 +84,6 @@ const Register = () => {
             </option>
             <option value="user">User</option>
             <option value="admin">Admin</option>
-            {/* add more roles if needed */}
           </select>
           <button type="submit">Register</button>
         </form>

@@ -1,12 +1,13 @@
-// PaymentButton.jsx
 import axios from "axios";
 
 const PaymentButton = ({ amount, bookingData }) => {
+  const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
+
   const handlePayment = async () => {
     try {
       // 1. Create order on backend
       const { data } = await axios.post(
-        "http://localhost:5000/api/v1/payments/create-order",
+        `${BASE_URL}/api/v1/payments/create-order`,
         { amount },
         { withCredentials: true }
       );
@@ -15,7 +16,7 @@ const PaymentButton = ({ amount, bookingData }) => {
 
       // 2. Configure Razorpay Checkout
       const options = {
-        key: import.meta.env.VITE_RAZORPAY_KEY_ID, // or use directly from .env
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID,
         amount: amount * 100,
         currency: "INR",
         name: "Bookify",
@@ -23,7 +24,7 @@ const PaymentButton = ({ amount, bookingData }) => {
         order_id,
         handler: async function (response) {
           const verifyRes = await axios.post(
-            "http://localhost:5000/api/v1/payments/verify-payment",
+            `${BASE_URL}/api/v1/payments/verify-payment`,
             {
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
@@ -34,13 +35,12 @@ const PaymentButton = ({ amount, bookingData }) => {
 
           if (verifyRes.data.success) {
             alert("Payment Successful!");
-
-            // 🔁 Optionally update booking status here
-            // await axios.post("/api/v1/bookings/confirm", { bookingData });
+            // Optionally confirm booking
+            // await axios.post(`${BASE_URL}/api/v1/bookings/confirm`, { bookingData });
           }
         },
         prefill: {
-          name: "Sandeep Repala", // or dynamic user name
+          name: "Sandeep Repala",
           email: "test@example.com",
         },
         theme: {

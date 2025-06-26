@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styles/CreateEvent.css'; // Import your CSS
+import '../styles/CreateEvent.css';
 
 const CreateEvent = () => {
   const [formData, setFormData] = useState({
@@ -53,11 +53,12 @@ const CreateEvent = () => {
       Object.entries(formData).forEach(([key, value]) => {
         form.append(key, value);
       });
-      form.append('coverImage', coverImage); // name must match multer
-    //   console.log("Form data being sent:", formData, coverImage);
+      form.append('coverImage', coverImage);
+
+      const backendURL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
 
       const response = await axios.post(
-        '/api/v1/admin/create-event',
+        `${backendURL}/api/v1/admin/create-event`,
         form,
         {
           headers: {
@@ -66,6 +67,7 @@ const CreateEvent = () => {
           }
         }
       );
+
       setMessage(response.data.message || "Event created successfully!");
       setFormData({
         title: '',

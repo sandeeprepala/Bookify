@@ -5,6 +5,8 @@ import DeleteShowButton from './DeleteShowButton';
 import '../styles/Admin.css';
 import EventRevenue from './EventRevenue';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
+
 const Admin = () => {
   const [selectedTheatreId, setSelectedTheatreId] = useState('');
   const [showForm, setShowForm] = useState(false);
@@ -52,7 +54,7 @@ const Admin = () => {
       {selectedTheatreId && (
         <TheatreShows theatreId={selectedTheatreId} />
       )}
-      <EventRevenue/>
+      <EventRevenue />
     </div>
   );
 };
@@ -62,7 +64,7 @@ const TheatreShows = ({ theatreId }) => {
 
   const fetchShows = async () => {
     try {
-      const res = await axios.get(`/api/v1/theatres/${theatreId}`);
+      const res = await axios.get(`${BACKEND_URL}/api/v1/theatres/${theatreId}`);
       setShows(res.data.data.shows);
     } catch (error) {
       console.error("Error fetching shows:", error);
@@ -88,8 +90,6 @@ const TheatreShows = ({ theatreId }) => {
           />
         </div>
       ))}
-      
-      
     </div>
   );
 };

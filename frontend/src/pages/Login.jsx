@@ -13,25 +13,26 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    const res = await axios.post('/api/v1/users/login', {
-      email: formData.email,
-      password: formData.password,
-    });
+    e.preventDefault();
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'}/api/v1/users/login`,
+        {
+          email: formData.email,
+          password: formData.password,
+        }
+      );
 
-    const { user, accessToken } = res.data.data;
+      const { user, accessToken } = res.data.data;
+      localStorage.setItem('bookifyUser', JSON.stringify({ user, accessToken }));
 
-    localStorage.setItem('bookifyUser', JSON.stringify({ user, accessToken }));
-    
+      navigate('/');
+    } catch (err) {
+      setMessage(err.response?.data?.message || 'Login failed.');
+      console.log(err);
+    }
+  };
 
-    // Redirect to homepage
-    navigate('/');
-  } catch (err) {
-    setMessage(err.response?.data?.message || 'Login failed.');
-    console.log(err);
-  }
-};
   return (
     <div className="auth-page">
       <div className="auth-card">
