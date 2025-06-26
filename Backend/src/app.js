@@ -7,7 +7,7 @@ const app = express();
 import cors from "cors";
 
 app.use(cors({
-  origin: "http://localhost:5173", // your frontend port
+  origin: "https://bookify-app-ten.vercel.app", // your frontend port
   credentials: true               // ✅ allow sending cookies
 }));
 
