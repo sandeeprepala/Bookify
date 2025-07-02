@@ -10,7 +10,7 @@ Admins can manage events, users can book and pay, and organizers can monitor boo
 ✅ Browse events with details, images & availability  
 ✅ User authentication and role-based access (User/Admin)  
 ✅ Book events with seats/tickets & real-time availability check  
-✅ Payment gateway integration (Stripe or Razorpay)  
+✅ Payment gateway integration (Razorpay)  
 ✅ Email notifications for booking confirmations  
 ✅ Admin Dashboard to add/edit/delete events & manage bookings  
 ✅ Fully responsive UI
