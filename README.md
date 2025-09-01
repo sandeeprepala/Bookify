@@ -3,6 +3,7 @@
 **Bookify** is an end-to-end event booking platform that lets users discover, book, and manage events easily.  
 Admins can manage events, users can book and pay, and organizers can monitor bookings — all in one place.
 
+Live link - https://bookify-app-ten.vercel.app/
 ---
 
 ## 📌 **Features**
